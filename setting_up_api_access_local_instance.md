@@ -4,6 +4,8 @@
 - Identify the scinote docker container
 - Run Rails Console
 - Create Doorkeeper application
+- Enable API in application settings
+- Restart SciNote
 
 ## Identify scinote docker container
 From Linux terminal run the following command
@@ -55,6 +57,19 @@ app.save!
 ```
 
 You should be informed that application was successfully saved and now you can close the rails console pressing CTRL+D.
+
+## Enable API in application settings
+
+Now open the production.env file and add the following line at the end of the file
+
+```CORE_API_V1_ENABLED=true```
+
+Save the file and restart the scinote by running following commands:
+
+```
+docker-compose -f docker-compose.production.yml down
+docker-compose -f docker-compose.production.yml up -d
+```
 
 ## Thats it :)
 As mentioned, you should now have uid and secret needed to obtain access tokens for your API client. 
